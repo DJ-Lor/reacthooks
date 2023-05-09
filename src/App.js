@@ -2,7 +2,7 @@
 import './App.css';
 import Home from './Pages/Home';
 import Inspections from './Pages/Inspections';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Articles from './Pages/Articles';
 
