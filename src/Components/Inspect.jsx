@@ -6,8 +6,8 @@ export default function Inspect({ inspect, index, markInspect, deleteInspect }) 
       <div className="todo">
         <span style={{ textDecoration: inspect.isDone ? "line-through" : "" }}>{inspect.text}</span>
         <div>
-          <button variant="outline-success" onClick={() => markInspect(index)}>done</button>{' '}
-          <button variant="outline-danger" onClick={() => deleteInspect(index)}>delete</button>
+          <button variant="outline-success" onClick={() => markInspect(index)}>✓</button>{' '}
+          <button variant="outline-danger" onClick={() => deleteInspect(index)}>✕</button>
         </div>
       </div>
     );
