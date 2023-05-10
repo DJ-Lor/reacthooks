@@ -11,7 +11,8 @@ export default function Inspections() {
     const [inspect, setInspect] = useState([{
         id: 0,
         inspectText: "sample inspect",
-        isDone: false
+        isDone: false,
+        highPriority: false
     }]);
 
     const addInspect = text => {
@@ -32,6 +33,21 @@ export default function Inspections() {
         setInspect(newInspect);
     }
 
+    const markPriority = index => {
+        const highInspect = [...inspect];
+        highInspect[index].highPriority = true;
+        setInspect(highInspect);
+    }
+
+    const sortedInspect = [...inspect].sort((a, b) => {
+        if (a.highPriority && !b.highPriority) {
+          return -1;
+        }
+        if (!a.highPriority && b.highPriority) {
+          return 1;
+        }
+        return 0;
+      });
 
     return (
         <div className="app">
@@ -39,7 +55,7 @@ export default function Inspections() {
                 <h1 className="text-center mb-4"> Here are your list of inspections </h1>
                 <FormInspect addInspect={addInspect} />
                 <div>
-                    {inspect.map((inspect, index) => (
+                    {sortedInspect.map((inspect, index) => (
                     <Card>
                     <Card.Body>
                         <Inspect
@@ -48,6 +64,7 @@ export default function Inspections() {
                         inspect={inspect}
                         markInspect={markInspect}
                         deleteInspect={deleteInspect}
+                        markPriority={markPriority}
                         />
                     </Card.Body>
                     </Card>
