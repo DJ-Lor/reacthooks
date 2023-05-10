@@ -3,11 +3,11 @@
 
 export default function Inspect({ inspect, index, markInspect, deleteInspect }) {
     return (
-      <div className="inspect">
+      <div className="todo">
         <span style={{ textDecoration: inspect.isDone ? "color: grey" : "" }}>{inspect.text}</span>
         <div>
-          <button onClick={() => markInspect(index)}>✓</button>{' '}
-          <button onClick={() => deleteInspect(index)}>✕</button>
+          <button variant="outline-success" onClick={() => markInspect(index)}>✓</button>{' '}
+          <button variant="outline-danger" onClick={() => deleteInspect(index)}>✕</button>
         </div>
       </div>
     );

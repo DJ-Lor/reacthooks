@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
 
     let activeNavStyle = {
-        color: "green",
+        color: "maroon",
         fontWeight: "bold"
     }
 
     return (
-        <nav>
+        <nav className="navbar">
             <ul>
                 <li>
                     <NavLink to="/" style={({isActive}) => isActive ? activeNavStyle : null}>

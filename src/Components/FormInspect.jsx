@@ -20,8 +20,8 @@ export default function FormInspect({addInspect}) {
         <div>
             <form>
                 <label>New Inspection To do</label>
-                <input type="text" value={value} onChange={ e => setValue(e.target.value)}  placeholder="Add new inspection"/>
-                <button type="Submit" onClick={handleSubmit}> Submit </button>
+                <input className="input" type="text" value={value} onChange={ e => setValue(e.target.value)}  placeholder="Add new inspection"/>
+                <button variant="primary mb-3" type="Submit" onClick={handleSubmit}> Submit </button>
 
             </form>
 

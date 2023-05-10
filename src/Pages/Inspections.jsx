@@ -1,7 +1,10 @@
+import '../form.css'
 import { useState } from "react";
-import { Card } from "react-bootstrap";
 import FormInspect from "../Components/FormInspect";
 import Inspect from "../Components/Inspect";
+import { Button, Card, Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function Inspections() {
 
@@ -31,8 +34,8 @@ export default function Inspections() {
 
 
     return (
-        <div>
-            <h1> Here are your list of inspections </h1>
+        <div className="container">
+            <h1 className="text-center mb-4"> Here are your list of inspections </h1>
             <FormInspect addInspect={addInspect} />
             <div>
                 {inspect.map((inspect, index) => (
