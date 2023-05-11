@@ -4,16 +4,19 @@ import FormInspect from "../Components/FormInspect";
 import Inspect from "../Components/Inspect";
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useLocalStorage } from 'react-use';
 
 
 export default function Inspections() {
-
+  
     const [inspect, setInspect] = useState([{
         id: 0,
         inspectText: "sample inspect",
         isDone: false,
         highPriority: false
     }]);
+
+    const [storedInspect, setStoredInspect] = useLocalStorage("storedInspect", "");
 
     const addInspect = text => {
         const newInspect = [...inspect, {text}];
@@ -50,16 +53,17 @@ export default function Inspections() {
       });
 
     // Load inspect object from localStorage on initial render
-        useEffect(() => {
-        const storedInspect = JSON.parse(localStorage.getItem('inspect')) || [];
-        console.log('Retrieved inspect from local storage:', storedInspect);
-        setInspect(storedInspect);}, []);
+    useEffect(() => {
+        setInspect(storedInspect);
+    }, []);
 
-    // Save inspect object to localStorage whenever notes change
-        useEffect(() => {
-        console.log('Saving inspect to local storage:', inspect);
-        localStorage.setItem('inspect', JSON.stringify(inspect));
+    // Save inspect object to localStorage whenever inspect change
+    useEffect(() => {
+        if (inspect) {
+            setStoredInspect(inspect)
+        }
     }, [inspect]);
+
 
 
     return (

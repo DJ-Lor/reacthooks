@@ -19,33 +19,3 @@ export default function Inspect({ inspect, index, markInspect, deleteInspect, ma
   }
 
 
-//   function TodoList({ todos }) {
-//     const highPriorityTodos = todos.filter(todo => todo.highPriority);
-//     const nonPriorityTodos = todos.filter(todo => !todo.highPriority);
-  
-//     return (
-//       <ul>
-//         {highPriorityTodos.map(todo => (
-//           <li key={todo.id} style={{ fontWeight: "bold" }}>
-//             <Inspect
-//               inspect={todo}
-//               markInspect={() => markInspect(todo.id)}
-//               deleteInspect={() => deleteInspect(todo.id)}
-//               markPriority={() => markPriority(todo.id)}
-//             />
-//           </li>
-//         ))}
-//         {nonPriorityTodos.map(todo => (
-//           <li key={todo.id}>
-//             <Inspect
-//               inspect={todo}
-//               markInspect={() => markInspect(todo.id)}
-//               deleteInspect={() => deleteInspect(todo.id)}
-//               markPriority={() => markPriority(todo.id)}
-//             />
-//           </li>
-//         ))}
-//       </ul>
-//     );
-//   }
-  
