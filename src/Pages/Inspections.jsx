@@ -5,39 +5,39 @@ import Inspect from "../Components/Inspect";
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocalStorage } from 'react-use';
+import { v4 as uuidv4 } from 'uuid';
 
 
 export default function Inspections() {
-  
-    const [inspect, setInspect] = useState([{
-        id: 0,
-        inspectText: "sample inspect",
-        isDone: false,
-        highPriority: false
-    }]);
+
+
+    const [inspect, setInspect] = useState([]);
 
     const [storedInspect, setStoredInspect] = useLocalStorage("storedInspect", "");
 
     const addInspect = text => {
-        const newInspect = [...inspect, {text}];
+        const newInspect = [...inspect, {id: uuidv4(), text, isDone: false, highPriority: false }];
         setInspect(newInspect);
     }
 
-    const markInspect = index => {
+    const markInspect = id => {
         const newInspect = [...inspect];
+        const index = newInspect.findIndex(item => item.id === id); 
         newInspect[index].isDone = true;
         setInspect(newInspect);
 
     }
 
-    const deleteInspect = index => {
+    const deleteInspect = id => {
         const newInspect = [...inspect];
+        const index = newInspect.findIndex(item => item.id === id);
         newInspect.splice(index,1);
         setInspect(newInspect);
     }
 
-    const markPriority = index => {
+    const markPriority = id => {
         const highInspect = [...inspect];
+        const index = highInspect.findIndex(item => item.id === id);
         highInspect[index].highPriority = true;
         setInspect(highInspect);
     }
@@ -73,10 +73,9 @@ export default function Inspections() {
                 <FormInspect addInspect={addInspect} />
                 <div>
                     {sortedInspect.map((inspect, index) => (
-                    <Card>
+                    <Card key={inspect.id}>
                     <Card.Body>
                         <Inspect
-                        key={index}
                         index={index}
                         inspect={inspect}
                         markInspect={markInspect}
