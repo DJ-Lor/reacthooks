@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 
 export default function FormInspect({addInspect}) {
 
-    const [value, setValue] = useState();
+    const [value, setValue] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
